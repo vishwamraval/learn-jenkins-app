@@ -25,3 +25,11 @@ test('has expected app version', async ({ page }) => {
   const isVisible = await page.locator(`p:has-text("Application version: ${expectedAppVersion}")`).isVisible();
   expect(isVisible).toBeTruthy();
 });
+
+test('flaky test for the flaky feature', async ({ page }) => {
+  await page.goto('/');
+
+  const flakyText = await page.locator('#flaky-feature').innerText();
+  expect(flakyText).toBe('The flaky feature is active!');
+});
+

@@ -14,6 +14,11 @@ function App() {
         >
           Learn Jenkins on Udemy
         </a>
+        {Math.random() > 0.5 ? (
+          <p id="flaky-feature">The flaky feature is active!</p>
+        ) : (
+          <p id="flaky-feature">The flaky feature is sleeping!</p>
+        )}
       </header>
       <p>
           Application version: 1
