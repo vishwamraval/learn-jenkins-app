@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'node-latest'
+    }
+
     environment {
         CI = 'true'
     }
