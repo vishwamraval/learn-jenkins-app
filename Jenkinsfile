@@ -1,8 +1,8 @@
 pipeline {
-    agent any
-
-    tools {
-        nodejs 'node-latest'
+    agent {
+        docker {
+            image 'node:18-bullseye'
+        }
     }
 
     environment {
@@ -12,8 +12,6 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                echo 'Installing system dependencies (libatomic1)...'
-                sh 'sudo apt-get update && sudo apt-get install -y libatomic1 || apt-get update && apt-get install -y libatomic1 || true'
                 echo 'Installing npm dependencies...'
                 sh 'npm ci'
             }
