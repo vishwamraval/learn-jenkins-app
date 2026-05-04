@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'node:18-bullseye'
+            image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
         }
     }
 
@@ -38,9 +38,7 @@ pipeline {
 
         stage('Run E2E Tests') {
             steps {
-                echo 'Installing Playwright browsers...'
-                sh 'npx playwright install --with-deps chromium'
-                echo 'Running E2E tests...'
+                echo 'Running E2E tests with Playwright...'
                 sh 'npx playwright test'
             }
             post {
